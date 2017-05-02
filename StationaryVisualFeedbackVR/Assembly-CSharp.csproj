@@ -150,6 +150,7 @@
      <Compile Include="assets\steamvr\interactionsystem\core\Scripts\VelocityEstimator.cs" />
      <Compile Include="assets\steamvr\interactionsystem\hints\Scripts\ControllerButtonHints.cs" />
      <Compile Include="assets\updateText.cs" />
+     <Compile Include="assets\updateUI.cs" />
      <None Include="assets\steamvr\Resources\SteamVR_Fade.shader" />
      <None Include="assets\steamvr\Resources\SteamVR_ClearAll.shader" />
      <None Include="assets\steamvr\interactionsystem\hints\Shaders\ControllerButtonHints.shader" />
