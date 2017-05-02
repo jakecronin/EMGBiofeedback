@@ -7,7 +7,8 @@ using System.IO;
 
 
 public class updateUI : MonoBehaviour {
-
+	public float min;
+	public float max;
 	public GameObject textObject;
 	private Text textToModify;
 	public string path;
@@ -17,7 +18,6 @@ public class updateUI : MonoBehaviour {
 	void Start () {
 		textToModify = textObject.GetComponent<Text> ();
 		transform = GetComponent<RectTransform> ();
-		//slideView (20);
 	}
 	
 	// Update is called once per frame
@@ -25,13 +25,18 @@ public class updateUI : MonoBehaviour {
 		//read data
 		StreamReader sr = new StreamReader (path);
 		string data = sr.ReadToEnd ();
-
+		sr.Close ();
 		//update string
 		textToModify.text = "Percent Force: " + data;
 
 		//convert to double and send to slideView
 		double value = double.Parse (data);
 		Debug.Log (data);
+
+		//scale data
+		value = ((value / (max - min)) + min) * 100;
+
+
 		slideView (value);
 	}
 
