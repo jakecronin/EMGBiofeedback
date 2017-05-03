@@ -41,6 +41,7 @@ public class updateUI : MonoBehaviour {
 
 		device = SteamVR_Controller.Input((int)trackedObject.index);
 		device.TriggerHapticPulse (900);
+		Debug.Log ("left trigger pressed");
 	}
 
 	void updateMax(){
@@ -63,7 +64,7 @@ public class updateUI : MonoBehaviour {
 		//convert to double and send to slideView
 		float value = (float) double.Parse (data);
 		if (value > max) {
-			value = max;
+			max = value;
 			Debug.Log ("updated max");
 		}
 		//scale data
