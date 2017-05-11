@@ -57,6 +57,7 @@
      <None Include="assets\steamvr\interactionsystem\hints\Shaders\ControllerButtonHints.shader" />
      <None Include="assets\steamvr\interactionsystem\Teleport\Shaders\Highlight.shader" />
      <None Include="assets\JakeData.txt" />
+     <None Include="assets\MeanAmplitudeData.txt" />
      <None Include="assets\steamvr\Resources\SteamVR_SphericalProjection.shader" />
      <None Include="assets\steamvr\Resources\SteamVR_AlphaOut.shader" />
      <None Include="assets\steamvr\readme.txt" />
