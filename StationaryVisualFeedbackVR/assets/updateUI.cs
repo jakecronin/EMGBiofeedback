@@ -7,43 +7,73 @@ using System.IO;
 
 
 public class updateUI : MonoBehaviour {
-	public float min;
-	public float max;
-	public GameObject textObject;
+	public float min;	//current minimum (set by editor)
+	public float max;	//current maximum (initial set by editor, updated by script)
+
+	public int targetPercentage;
+	public string targetPercentageText;
+
+	public GameObject currentForceLabel;	//label that displays the current force
+	public GameObject targetPercentageLabel;	//size set by target percentage
+
 	public string path;
 	public RectTransform transform;
 
+	//Controllers
 	public GameObject controllerLeft;
-
-	//used for haptic feedback
-	private SteamVR_TrackedObject trackedObject;
+	public GameObject controllerRight;
+		//used for controller haptic feedback
+	private SteamVR_TrackedObject trackedObjectLeft;
+	private SteamVR_TrackedObject trackedObjectRight;
 	private SteamVR_Controller.Device device;
+		//used for controller delegate (button presses)
+	private SteamVR_TrackedController trackedControllerLeft;
+	private SteamVR_TrackedController trackedControllerRight;
 
-	//Used for modifying text
-	private Text textToModify;
 
-	//used for delegate
-	private SteamVR_TrackedController controller;
+	//Strings that are modified during runtime, copy inputs at Start
+	private Text targetTextToModify;
+	private Text currentForceTextToModify;
+
 
 	// Use this for initialization
 	void Start () {
 
-		//load objects
-		textToModify = textObject.GetComponent<Text> ();
+		targetTextToModify = targetPercentageLabel.GetComponent<Text> ();
+		if (targetPercentageText != null) {
+			targetTextToModify = targetPercentageText;
+		}
+	
+		currentForceTextToModify = currentForceLabel.GetComponent<Text> ();
+
 		transform = GetComponent<RectTransform> ();
-		controller = controllerLeft.GetComponent<SteamVR_TrackedController> ();
-		controller.TriggerClicked += TriggerPressed;
-		trackedObject = controllerLeft.GetComponent<SteamVR_TrackedObject> ();
+
+		//Set Delegate, trigger clicks cause triggerPressed function
+		trackedControllerLeft = controllerLeft.GetComponent<SteamVR_TrackedController> ();
+		trackedControllerLeft.TriggerClicked += LeftTriggerPressed;
+
+		trackedControllerRight = controllerLeft.GetComponent<SteamVR_TrackedController> ();
+		trackedControllerRight.TriggerClicked += RightTriggerPressed;
+
+		//set delegates
+		trackedObjectLeft = controllerLeft.GetComponent<SteamVR_TrackedObject> ();
+		trackedObjectRight = controllerRight.GetComponent<SteamVR_TrackedObject> ();
 	}
 
-	void TriggerPressed(object sender, ClickedEventArgs e){
+	void LeftTriggerPressed(object sender, ClickedEventArgs e){
 		updateMax ();
 
-		device = SteamVR_Controller.Input((int)trackedObject.index);
+		device = SteamVR_Controller.Input((int)trackedObjectLeft.index);
 		device.TriggerHapticPulse (900);
-		Debug.Log ("left trigger pressed");
+		Debug.Log ("Left trigger pressed");
 	}
+	void RightTriggerPressed(object sender, ClickedEventArgs e){
+		updateMax ();
 
+		device = SteamVR_Controller.Input((int)trackedObjectRight.index);
+		device.TriggerHapticPulse (900);
+		Debug.Log ("Right trigger pressed");
+	}
 	void updateMax(){
 		StreamReader sr = new StreamReader (path);
 		string data = sr.ReadToEnd ();
@@ -59,7 +89,7 @@ public class updateUI : MonoBehaviour {
 		string data = sr.ReadToEnd ();
 		sr.Close ();
 		//update string
-		textToModify.text = "Percent Force: " + data;
+		currentForceTextToModify.text = "Percent Force: " + data;
 
 		//convert to double and send to slideView
 		float value = (float) double.Parse (data);
