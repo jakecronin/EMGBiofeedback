@@ -1,9 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="assets\updateUI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="assets/updateUI.cs">
     <Files>
-      <File FileName="assets\ButtonManager.cs" Line="1" Column="1" />
-      <File FileName="assets\updateUI.cs" Line="69" Column="4" />
+      <File FileName="assets/updateUI.cs" Line="117" Column="113" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

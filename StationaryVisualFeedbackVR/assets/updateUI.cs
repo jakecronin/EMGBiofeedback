@@ -17,7 +17,7 @@ public class updateUI : MonoBehaviour {
 	public GameObject targetPercentageLabel;	//size set by target percentage
 
 	public string path;
-	public RectTransform transform;
+	public GameObject FillObject;			//the view that slides to make the container appear to fill up
 
 	//Controllers
 	public GameObject controllerLeft;
@@ -41,7 +41,7 @@ public class updateUI : MonoBehaviour {
 
 		targetTextToModify = targetPercentageLabel.GetComponent<Text> ();
 		if (targetPercentageText != null) {
-			targetTextToModify = targetPercentageText;
+			targetTextToModify.text = targetPercentageText;
 		}
 	
 		currentForceTextToModify = currentForceLabel.GetComponent<Text> ();
@@ -92,25 +92,38 @@ public class updateUI : MonoBehaviour {
 		currentForceTextToModify.text = "Percent Force: " + data;
 
 		//convert to double and send to slideView
-		float value = (float) double.Parse (data);
-		if (value > max) {
-			max = value;
+		float forceValue = (float) double.Parse (data);
+		if (forceValue > max) {
+			max = forceValue;
 			Debug.Log ("updated max");
 		}
 		//scale data
-		value = ((value / (max - min)) + min) * 100;
+		forceValue = ((forceValue / (max - min)) + min) * 100;
 
 
-		slideView (value);
+		slideObjectToPercentage (forceValue);
 	}
 
-	void slideView(double percentage){
+	void slideObjectToPercentage(double percentage, GameObject gameObject, GameObject referenceObject){	//set top of object to _% to top of reference object
 
-		float newHeight = (float)percentage - 100;
+		RectTransform transformToMove = gameObject.GetComponent<RectTransform> ();
+		RectTransform transformOfReference = referenceObject.GetComponent<RectTransform> ();
 
-		Vector3 position = transform.localPosition;
-		position.y = newHeight;
-		transform.localPosition = position;
+		float heightOfReference = transformOfReference.rect.height;
+		float yValueOfReference = transformOfReference.localPosition.y;
+
+		float emptyHeight = (1 - percentage) * heightOfReference;	//size of gap between top of reference and top of fill
+
+		//set new object /(emptyHeight) from top of reference. This is going to be origin of reference + emptyHeight/2
+
+		float newHeight = transformOfReference.localPosition     (float)percentage - 100;
+
+		transformToMove.localPosition.y = newHeight;
 	}
+
+	void setTargetToPercentage (double percentage){
+		
+	}
+		
 
 }
