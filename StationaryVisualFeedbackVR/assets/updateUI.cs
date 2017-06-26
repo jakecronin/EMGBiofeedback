@@ -76,6 +76,7 @@ public class updateUI : MonoBehaviour {
 
 	void slideView(double percentage){
 
+
 		float newHeight = (float)percentage - 100;
 
 		Vector3 position = transform.localPosition;
