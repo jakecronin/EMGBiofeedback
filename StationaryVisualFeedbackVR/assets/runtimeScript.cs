@@ -20,7 +20,7 @@ public class runtimeScript : MonoBehaviour {
 
 	public string pathToEMGData;
 
-	public float targetPercentage;
+	public string pathToTargetPercentage;
 
 
 	//used to send haptic feedback
@@ -58,16 +58,21 @@ public class runtimeScript : MonoBehaviour {
 		}
 
 		//slide fillImage to scaled percentage
-		float scaledValue = ((dataValue / (max - min)) + min) * 100;
+		float scaledValue = ((dataValue - min) / (max - min));
 		slideView (scaledValue);
 
 		setTargetPercentage ();
 
 	}
 	void setTargetPercentage(){
+
+		StreamReader sr = new StreamReader(pathToTargetPercentage);
+		string data = sr.ReadToEnd();
+		sr.Close();
+		float targetPercentage = (float)double.Parse(data); 
 		float percentage = targetPercentage / 100;
 
-		float containerHeight = fillImageObject.rectTransform.rect.height;
+		float containerHeight = fillContainerObject.rectTransform.rect.height;
 		float offset = (containerHeight * percentage) - (containerHeight / 2);
 
 		Vector3 newPosition = targetNotch.rectTransform.localPosition;
@@ -76,16 +81,17 @@ public class runtimeScript : MonoBehaviour {
 
 		targetText.text = targetPercentage + "%";
 	}
-	void slideView(float percentage){
-
+	void slideView(float scale){
+		Debug.Log("float scale is: "+scale);
 		//get image displacement and height
 		float containerHeight = fillContainerObject.rectTransform.rect.height;
-		float fillImageHeight = containerHeight * percentage;
+		float fillImageHeight = containerHeight * scale;
 		float centerDisplacement = (containerHeight - fillImageHeight) / 2;
 
 		//move and resize image
 		Vector3 newImagePosition = fillImageObject.rectTransform.localPosition;
-		newImagePosition.y = fillContainerObject.rectTransform.localPosition.y + centerDisplacement;
+		newImagePosition.y = fillContainerObject.rectTransform.localPosition.y - centerDisplacement;
+		fillImageObject.rectTransform.localPosition = newImagePosition;
 		fillImageObject.rectTransform.sizeDelta = new Vector2 (fillContainerObject.rectTransform.rect.width, fillImageHeight);
 	}
 
