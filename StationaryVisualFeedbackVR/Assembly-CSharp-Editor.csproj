@@ -52,9 +52,11 @@
      <Compile Include="assets\steamvr\Editor\SteamVR_Settings.cs" />
      <Compile Include="assets\steamvr\Editor\SteamVR_SkyboxEditor.cs" />
      <Compile Include="assets\steamvr\Editor\SteamVR_Update.cs" />
+     <None Include="assets\BiofeedbackTargetPercentage.txt" />
      <None Include="assets\steamvr\Resources\SteamVR_Fade.shader" />
      <None Include="assets\steamvr\Resources\SteamVR_ClearAll.shader" />
      <None Include="assets\steamvr\interactionsystem\hints\Shaders\ControllerButtonHints.shader" />
+     <None Include="assets\BiofeedbackData.txt" />
      <None Include="assets\steamvr\interactionsystem\Teleport\Shaders\Highlight.shader" />
      <None Include="assets\JakeData.txt" />
      <None Include="assets\MeanAmplitudeData.txt" />
