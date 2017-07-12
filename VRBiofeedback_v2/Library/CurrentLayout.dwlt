@@ -70,7 +70,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 24
+  controlID: 35
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 23
+  controlID: 126
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 104
+  controlID: 127
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -383,23 +383,23 @@ MonoBehaviour:
     height: 584
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 28070000
-    m_LastClickedID: 0
-    m_ExpandedIDs: e2fbffffe4fbffffe6fbffff00000000fe2900001e2a0000242a00005e2a0000782a0000882a00009c2a0000aa2a0000
+    m_SelectedIDs: 88350000
+    m_LastClickedID: 13704
+    m_ExpandedIDs: 70daffff0000000064350000883500008e350000fe350000223600003a360000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Image
+      m_OriginalName: Image
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: -26288
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 4
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 9}
     m_SearchString: 
@@ -484,13 +484,13 @@ MonoBehaviour:
   m_LastFolders:
   - Assets
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: C:\Users\Tinggroup\Desktop\VRMuscleActivationVisualizer\StationaryVisualFeedbackVR
+  m_LastProjectPath: C:\Users\Tinggroup\Desktop\VRMuscleActivationVisualizer\VRBiofeedback_v2
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a8250000
-    m_LastClickedID: 9640
-    m_ExpandedIDs: 00000000a825000046280000242b0000262b0000282b00002a2b000000ca9a3bffffff7f
+    m_SelectedIDs: 62340000
+    m_LastClickedID: 13410
+    m_ExpandedIDs: 0000000062340000103500007e36000080360000823600008436000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -518,7 +518,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a825000046280000242b0000262b0000282b00002a2b0000
+    m_ExpandedIDs: 0000000062340000103500007e360000803600008236000084360000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -676,14 +676,14 @@ MonoBehaviour:
     width: 1280
     height: 200
   m_SceneLighting: 1
-  lastFramingTime: 332.8842544197531
+  lastFramingTime: 133.48526261728395
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -2.5, y: 0, z: 310}
+    m_Target: {x: 47.5, y: 0, z: 310}
     speed: 2
-    m_Value: {x: -2.5, y: 0, z: 310}
+    m_Value: {x: 47.5, y: 0, z: 310}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -710,9 +710,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: -1}
   m_Size:
-    m_Target: 508.8032
+    m_Target: 11.667262
     speed: 2
-    m_Value: 508.8032
+    m_Value: 11.667262
   m_Ortho:
     m_Target: 1
     speed: 2
