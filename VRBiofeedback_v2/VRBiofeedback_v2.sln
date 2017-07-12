@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRBiofeedback_v2", "Assembly-CSharp.csproj", "{620FD679-EB7C-3FEE-216A-94D286BA47EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRBiofeedback_v2", "Assembly-CSharp-Editor.csproj", "{DF94CC2E-24B5-7EF5-2778-A0D2081C9DBE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{620FD679-EB7C-3FEE-216A-94D286BA47EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{620FD679-EB7C-3FEE-216A-94D286BA47EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{620FD679-EB7C-3FEE-216A-94D286BA47EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{620FD679-EB7C-3FEE-216A-94D286BA47EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF94CC2E-24B5-7EF5-2778-A0D2081C9DBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF94CC2E-24B5-7EF5-2778-A0D2081C9DBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF94CC2E-24B5-7EF5-2778-A0D2081C9DBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF94CC2E-24B5-7EF5-2778-A0D2081C9DBE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

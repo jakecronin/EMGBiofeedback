@@ -7,20 +7,28 @@ using System.IO;
 
 public class runtimeScript : MonoBehaviour {
 
-	public Text valueTextObject;
-	public Image fillContainerObject;
-	public Image fillImageObject;
-	public Image targetNotch;
-	public Text targetText;
+	public Text valueTextObject;		//test to make sure data is being read in
+
+	public Image graphObject;		//background graph
+	public Image targetObject;		//target to hit
+	public Image dotObject;			//moving dot
+
 	public GameObject leftController;
 	public GameObject rightController;
 
-	public float min;
-	public float max;
+	public float leftMax;
+	public float rightMax;
 
-	public string pathToEMGData;
+	public float dotHeight;
+	public float dotWidth;
 
-	public string pathToTargetPercentage;
+	public float targetHeight;
+	public float targetWidth;
+
+	public string pathToRightData;	//filepath to emg data for right muscles
+	public string pathToLeftData;	//filepath to emg data for left muscles
+
+	public string pathToTargetPercentage;	//filepath to number that represents target activation
 
 
 	//used to send haptic feedback
@@ -41,67 +49,70 @@ public class runtimeScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		StreamReader sr = new StreamReader (pathToEMGData);
-		string data = sr.ReadToEnd ();
-		sr.Close ();
 
-		//update value text
-		valueTextObject.text = data;
+		//Read Left and Right Values
+		float rightValue = getRightData();
+		float leftValue = getLeftData();
 
-		//get float value for data string
-		float dataValue = (float) double.Parse (data);
-
-		//update max if needed
-		if (dataValue > max) {
-			max = dataValue;
-			Debug.Log ("updated max");
+		//Calculate left and right values as percentage of their max
+		if (rightValue>rightMax) {
+			rightMax = rightValue;
 		}
+		float rightPercent = rightValue / rightMax;
 
-		//slide fillImage to scaled percentage
-		float scaledValue = ((dataValue - min) / (max - min));
-		slideView (scaledValue);
 
-		setTargetPercentage ();
+		if (leftValue>leftMax) {
+			leftMax = leftValue;
+		}
+		float leftPercent = leftValue / leftMax;
+
+
+		float height = (rightPercent + leftPercent) / 2;	//Get current height (0 - 1, aka 0 - 100%)
+		float dotX = leftPercent / (rightPercent + leftPercent); 		//Get X value -> whether dot is closer to left, right, or middle (0 to 1)
+
+		//adjust dot position
+		moveDot (height, dotX, dotWidth, dotHeight);
+
+
+		//ADJUST TARGET
+		float targetPercentage = getTargetPercentage();
+		float mid = (float)0.5;
+		moveTarget (targetPercentage, mid, targetWidth, targetHeight);
+
 
 	}
-	void setTargetPercentage(){
 
-		StreamReader sr = new StreamReader(pathToTargetPercentage);
-		string data = sr.ReadToEnd();
-		sr.Close();
-		float targetPercentage = (float)double.Parse(data); 
-		float percentage = targetPercentage / 100;
-
-		float containerHeight = fillContainerObject.rectTransform.rect.height;
-		float offset = (containerHeight * percentage) - (containerHeight / 2);
-
-		Vector3 newPosition = targetNotch.rectTransform.localPosition;
-		newPosition.y = fillContainerObject.rectTransform.localPosition.y + offset;
-		targetNotch.rectTransform.localPosition = newPosition;
-
-		targetText.text = targetPercentage + "%";
-	}
-	void slideView(float scale){
-		Debug.Log("float scale is: "+scale);
+	void moveDot(float yPercent, float xPercent, float width, float height){
 		//get image displacement and height
-		float containerHeight = fillContainerObject.rectTransform.rect.height;
-		float fillImageHeight = containerHeight * scale;
-		float centerDisplacement = (containerHeight - fillImageHeight) / 2;
+		float graphHeight = graphObject.rectTransform.rect.height;
+		float graphWidth = graphObject.rectTransform.rect.width;
+
+		//move dot
+		Vector3 newDotPosition = dotObject.rectTransform.localPosition;
+		newDotPosition.y = graphObject.rectTransform.localPosition.y - (graphHeight / 2) + (graphHeight * yPercent);
+		newDotPosition.x = graphObject.rectTransform.localPosition.x - (graphWidth / 2) + (graphWidth * xPercent);
+		dotObject.rectTransform.localPosition = newDotPosition;
+
+		//resize dot
+		dotObject.rectTransform.sizeDelta = new Vector2(width, height);
+	}
+
+	void moveTarget(float yPercent, float xPercent, float width, float height){
+		//get image displacement and height
+		float graphHeight = graphObject.rectTransform.rect.height;
+		float graphWidth = graphObject.rectTransform.rect.width;
 
 		//move and resize image
-		Vector3 newImagePosition = fillImageObject.rectTransform.localPosition;
-		newImagePosition.y = fillContainerObject.rectTransform.localPosition.y - centerDisplacement;
-		fillImageObject.rectTransform.localPosition = newImagePosition;
-		fillImageObject.rectTransform.sizeDelta = new Vector2 (fillContainerObject.rectTransform.rect.width, fillImageHeight);
+		Vector3 newTargetPosition = targetObject.rectTransform.localPosition;
+		newTargetPosition.y = graphObject.rectTransform.localPosition.y - (graphHeight / 2) + (graphHeight * yPercent);
+		newTargetPosition.x = graphObject.rectTransform.localPosition.x - (graphWidth / 2) + (graphWidth * xPercent);
+		targetObject.rectTransform.localPosition = newTargetPosition;
+
+		//update target size
+		targetObject.rectTransform.sizeDelta = new Vector2(width, height);
 	}
 
-	void setMax(){
-		StreamReader sr = new StreamReader (pathToEMGData);
-		string data = sr.ReadToEnd ();
-		sr.Close ();
-		float value = (float)double.Parse (data);
-		max = value;
-	}
+
 	void setUpControllers(){
 		//connect left trigger to trigger functions
 		trackedControllerLeft = leftController.GetComponent<SteamVR_TrackedController> ();
@@ -125,4 +136,29 @@ public class runtimeScript : MonoBehaviour {
 		setMax ();
 	}
 
+	float getLeftData(){
+		StreamReader sr = new StreamReader (pathToLeftData);
+		string leftDataString = sr.ReadToEnd ();
+		float leftValue = (float)double.Parse (leftDataString);
+		sr.Close ();
+		return leftValue;
+	}
+	float getRightData(){
+		StreamReader sr = new StreamReader (pathToRightData);
+		string rightDataString = sr.ReadToEnd ();
+		float rightValue = (float)double.Parse (rightDataString);
+		sr.Close ();
+		return rightValue;
+	}
+	float getTargetPercentage(){
+		StreamReader sr = new StreamReader (pathToTargetPercentage);
+		string targetPercentageString = sr.ReadToEnd ();
+		sr.Close ();
+		return (float)double.Parse (targetPercentageString) / 100;
+	}
+		
+	void setMax(){
+		leftMax = getLeftData ();
+		rightMax = getRightData ();
+	}
 }
