@@ -68,7 +68,7 @@ public class runtimeScript : MonoBehaviour {
 
 
 		float height = (rightPercent + leftPercent) / 2;	//Get current height (0 - 1, aka 0 - 100%)
-		float dotX = leftPercent / (rightPercent + leftPercent); 		//Get X value -> whether dot is closer to left, right, or middle (0 to 1)
+		float dotX = rightPercent / (rightPercent + leftPercent); 		//Get X value -> whether dot is closer to left, right, or middle (0 to 1)
 
 		//adjust dot position
 		moveDot (height, dotX, dotWidth, dotHeight);
