@@ -158,10 +158,12 @@
      <None Include="assets\steamvr\Resources\SteamVR_ClearAll.shader" />
      <None Include="assets\steamvr\interactionsystem\hints\Shaders\ControllerButtonHints.shader" />
      <None Include="assets\steamvr\interactionsystem\Teleport\Shaders\Highlight.shader" />
+     <None Include="assets\BiofeedbackAmplitudeError.txt" />
      <None Include="assets\steamvr\Resources\SteamVR_SphericalProjection.shader" />
      <None Include="assets\steamvr\Resources\SteamVR_AlphaOut.shader" />
      <None Include="assets\steamvr\readme.txt" />
      <None Include="assets\LeftEMGData.txt" />
+     <None Include="assets\BiofeedbackLRError.txt" />
      <None Include="assets\steamvr\interactionsystem\core\Shaders\Silhouette.shader" />
      <None Include="assets\steamvr\Resources\SteamVR_ColorOut.shader" />
      <None Include="assets\steamvr\interactionsystem\core\Shaders\SeeThru.shader" />
