@@ -1,0 +1,85 @@
+# depslib dependency file v1.0
+1284587660 source:c:\dcsanalysis\dll\main.c
+	"main.h"
+
+1284587685 c:\dcsanalysis\dll\main.h
+	<windows.h>
+	<stdio.h>
+	"_aux.h"
+	"read.h"
+	"mat.h"
+
+1284587793 c:\dcsanalysis\dll\_aux.h
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"def.h"
+
+1284568338 c:\dcsanalysis\dll\def.h
+
+1283624405 c:\dcsanalysis\dll\read.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<time.h>
+	"def.h"
+
+1284587225 c:\dcsanalysis\dll\mat.h
+	<math.h>
+	<stdlib.h>
+	"def.h"
+	"_aux.h"
+
+1284587840 source:c:\dcsanalysis\dll\mat.c
+	<stdio.h>
+	"mat.h"
+
+1283788471 source:c:\dcsanalysis\dll\read.c
+	"read.h"
+
+1284587092 source:c:\dcsanalysis\dll\_aux.c
+	"_aux.h"
+
+1283809047 source:c:\dcsanalysis\main.c
+	"main.h"
+
+1283548376 c:\dcsanalysis\main.h
+	<windows.h>
+	<stdio.h>
+	"_aux.h"
+	"read.h"
+	"mat.h"
+
+1283554782 c:\dcsanalysis\_aux.h
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"def.h"
+
+1283809015 c:\dcsanalysis\def.h
+
+1283624405 c:\dcsanalysis\read.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<time.h>
+	"def.h"
+
+1282794525 c:\dcsanalysis\mat.h
+	<math.h>
+	<stdlib.h>
+	"def.h"
+	"_aux.h"
+
+1283788436 source:c:\dcsanalysis\mat.c
+	<stdio.h>
+	"mat.h"
+
+1283788471 source:c:\dcsanalysis\read.c
+	"read.h"
+
+1283961112 source:c:\dcsanalysis\_aux.c
+	"_aux.h"
+

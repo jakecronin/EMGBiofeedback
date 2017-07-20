@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="_aux.c" open="1" top="0" tabpos="3">
+		<Cursor position="9056" topLine="42" />
+	</File>
+	<File name="def.h" open="1" top="0" tabpos="2">
+		<Cursor position="3461" topLine="81" />
+	</File>
+	<File name="main.c" open="1" top="0" tabpos="1">
+		<Cursor position="1334" topLine="27" />
+	</File>
+	<File name="mat.c" open="1" top="1" tabpos="4">
+		<Cursor position="41251" topLine="1009" />
+	</File>
+	<File name="read.c" open="1" top="0" tabpos="5">
+		<Cursor position="15997" topLine="447" />
+	</File>
+</CodeBlocks_layout_file>
