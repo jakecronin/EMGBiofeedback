@@ -1,0 +1,43 @@
+# depslib dependency file v1.0
+1283788471 source:c:\dcsanalysis\read.c
+	"read.h"
+
+1283624405 c:\dcsanalysis\read.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<time.h>
+	"def.h"
+
+1284594116 c:\dcsanalysis\def.h
+
+1284582984 source:c:\dcsanalysis\_aux.c
+	"_aux.h"
+
+1284648353 c:\dcsanalysis\_aux.h
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"def.h"
+
+1284594142 source:c:\dcsanalysis\main.c
+	"main.h"
+
+1284587685 c:\dcsanalysis\main.h
+	<windows.h>
+	<stdio.h>
+	"_aux.h"
+	"read.h"
+	"mat.h"
+
+1284587225 c:\dcsanalysis\mat.h
+	<math.h>
+	<stdlib.h>
+	"def.h"
+	"_aux.h"
+
+1284648385 source:c:\dcsanalysis\mat.c
+	<stdio.h>
+	"mat.h"
+
