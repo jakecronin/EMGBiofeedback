@@ -17,7 +17,7 @@ for i=1:numtests
     test = data.(testnames{i});
     plots(i) = PlotTest(test);  %plot trials for this test on one subplot
     set(gca, 'XTick', []);  %remove x axis
-    ylim([0,30]);       %scale axis
+    ylim([0,40]);       %scale axis
     l = refline(0,10);  %add target line
     l.Color = 'b';
     

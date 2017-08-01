@@ -1,0 +1,9 @@
+dirname = 'Modified Data';
+experiment = PullDataFromDir(dirname);
+testnames = fieldnames(experiment);
+
+for i = 1:length(testnames)
+    data = experiment(
+
+max = 1;    %needs to be recorded and pulled from data
+data = experiment.fiel

@@ -26,14 +26,11 @@ rmsline = refline(0, rootmeansquare);
 rmsline.Color = 'b';
 
 sampleRate = 2000;
-sampleSize = 67;   %sampleRate / 30;
+sampleSize = sampleRate / 30;
 movingmean = movmean(allvalues, sampleSize);
 meanline = refline(0, movingmean);
-meanline.Color = 'g';
 
-movingrms = step(movRMS, allvalues);
-movrmsline = refline(0, movingrms);
-movrmsline.Color = 'i';
+movingrms = step(movRMS
 %devline1 = refline(0,avg-stddev);
 %devline2 = refline(0,avg+stddev);
 %devline1.Color = 'y';
