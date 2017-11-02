@@ -1,0 +1,11 @@
+
+d = dir(pwd);
+isub = [d(:).isdir]; %# returns logical vector
+nameFolds = {d(isub).name}';
+nameFolds(ismember(nameFolds,{'.','..'})) = [];
+
+for i = 1:numel(nameFolds)
+    [r,f,d] = getFilenames(nameFolds);
+    getDataFromFiles(r, f, d);
+    
+end

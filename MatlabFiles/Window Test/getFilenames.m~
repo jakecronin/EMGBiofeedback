@@ -1,0 +1,21 @@
+function [ raw, filt, disp ] = getFilenames( folder )
+%getFilenamesFromDir takes a directory and pulls the filename for the raw
+%data file, the filtered data file, and the display data file
+
+listing = dir(folder);
+rawEnd = 'RawData.txt';
+filtEnd = 'FilteredData.txt';
+dispEnd = 'DisplayData.csv';
+
+    for i = 1:numel(listing)
+        disp(listing
+        name = listing(i);
+        if (rawEnd == extractAfter(name, size(name)-size(rawEnd)))
+            raw = name;
+        elseif (filtEnd == extractAfter(name, size(name)-size(filtEnd)))
+            filt = name;
+        elseif (dispEnd == extractAfter(name, size(name)-size(dispEnd)))
+            disp = name;
+        end
+    end
+end
