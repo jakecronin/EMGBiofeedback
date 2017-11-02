@@ -44,6 +44,9 @@ xEnd = xFiltered(end);
 range = xEnd - xStart;
 xDisp = [xStart:(range / numel(dispValues)):xEnd - 1];
 
+disp(filtFilename);
+filtStdDev = std(filtEMGValues);
+disp(filtStdDev);
 data = {xRaw, rawEMGValues, xFiltered, filtEMGValues, xDisp, dispValues};
 
 end
