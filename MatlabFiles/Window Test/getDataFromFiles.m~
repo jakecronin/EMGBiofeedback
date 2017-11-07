@@ -30,10 +30,11 @@ dispFid = fopen(dispFilename);
 displayData = textscan(dispFid, '%f%s%s%s', 'delimiter', ',');
 yDisp = displayData{1};      
 %   scale disp data
-mvcFid = fopen(fmvcFilename);
-mvcData = textscan(mvcFid, '%s %s %f %f %f %f %f %f %f %f', 'headerlines', headerLines);
-yMVC = mvcData{targetChannel+2};
+%mvcFid = fopen(mvcFilename);
+%mvcData = textscan(mvcFid, '%s %s %f %f %f %f %f %f %f %f', 'headerlines', headerLines);
+%mvcValues = mvcData{targetChannel+2};
 %mvcMax = max(mvcValues);
+%dispValues = dispValues * mvcMax / 100;
 %   get display x values
 %frewind(filterFid);
 %headerLine = fgets(filterFid);
@@ -53,8 +54,7 @@ data.xFilt = xFilt;
 data.yFilt = yFilt;
 data.xDisp = xDisp;
 data.yDisp = yDisp;
-data.yMVC = yMVC;
-
+data.name = 
 
 end
 
