@@ -1,4 +1,4 @@
-function [ data ] = getDataFromFiles( rawFilename, filtFilename, dispFilename)
+function [ data ] = getDataFromFiles( rawFilename, filtFilename, dispFilename, rmvcFilename, fmvcFilename)
 %getDataFromFiles takes strings of 3 filenames for raw, filtered, and
 %display data. It returns a cell with the corresponding x,y data for each
 %file
@@ -15,6 +15,8 @@ rawData = textscan(rawFid, '%s %s %f %f %f %f %f %f %f %f', 'headerlines', heade
 rawEMGValues = rawData{targetChannel + 2};
 xRaw = todatenum(cdfepoch(rawData{2}));
 xRaw = (xRaw - xRaw(1,1)) * 100000000;  %scale x values
+rmvcFid = fopen(fmvcFilename); %scale y values
+rmvcaData = textscan(rmvcFid, '%s %s %f %f %f %f %f %f %f %f', 'headerlines', headerLines);
 
 %2) Get Filtered Data
 filtFid = fopen(filtFilename);

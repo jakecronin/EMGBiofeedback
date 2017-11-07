@@ -7,8 +7,14 @@ nameFolds(ismember(nameFolds,{'.','..'})) = [];
 figure
 for i = 1:numel(nameFolds)
     name = nameFolds{i};
-    [r,f,d] = getFilenames(name);
-    data = getDataFromFiles(r, f, d);    
+    [r,f,d, rmvc, fmvc] = getFilenames(name);
+    data = getDataFromFiles(r, f, d, rmvc, fmvc);    
+    mvcs = getMVCValue(fmvc);
+    r = r / mvcs(1,1) * 100;
+    f = f / mvcs(1,1) * 100;
+    %get MVC Values to scale data
+   
+    
     subplot(numel(nameFolds),1,i);
     plot(data{5}, data{6})
     ylim([0 20]);
