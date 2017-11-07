@@ -10,7 +10,7 @@ for i = 1:8
     vals = data{i+2};
     %M = movmean(vals, 500); %0.5 second moving average
     %mvcs(i) = max(M);
-    mvcs(i) = max(vals);
+    
 end
 
 end
