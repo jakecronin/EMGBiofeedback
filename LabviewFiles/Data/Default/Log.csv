@@ -1,0 +1,8 @@
+Trial Number, Filter Upper Cutoff, Filter Lower Cutoff, Sample Rate (HZ), Display FPS, Display Window Size (S), MVC Window Size (S), Seconds to Acquire MVC, Display Channel, MVC Value, Start Time, Trial Name, , , , , , 
+MVC01, 500, 20, 1000, 30, 500, 500, 3, 1, n/a, 02/27/2018 14:09:18.140, 
+MVC01, 500, 20, 1000, 30, 500, 500, 3, 1, n/a, 02/27/2018 14:10:28.511, 
+Trial01, 500, 20, 1000, 30, 500, 500, 3, 1, 0.006542, 02/27/2018 14:10:31.961, 
+MVC01, 500, 20, 1000, 30, 500, 500, 3, 1, n/a, 02/27/2018 14:20:25.914, 
+Trial01, 500, 20, 1000, 30, 500, 500, 3, 1, 0.006330, 02/27/2018 14:20:29.511, 
+MVC01, 500, 20, 1000, 30, 500, 500, 3, 1, n/a, 02/27/2018 14:26:15.100, 
+Trial01, 500, 20, 1000, 30, 500, 500, 3, 1, 0.005723, 02/27/2018 14:26:20.598, 
