@@ -33,8 +33,10 @@ raw_data = csvread(raw_filepath,1,0);
     rect_data = rect_data / mvc * 100 ;
 
 %   LOWPASS FOR SMOOTHING at 5th order 10 hz
-    [b,a]=butter(5,10/1000,'low'); %5th order butterworth lowpass filter
-    smooth_data = filtfilt(b,a,rect_data);
+    %[b,a]=butter(5,10/1000,'low'); %5th order butterworth lowpass filter
+    %smooth_data = filtfilt(b,a,rect_data);
+    smooth_data = movmean(rect_data, 500);
+    %smooth_data = rect_data;
 
 
 
