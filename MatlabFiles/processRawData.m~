@@ -1,0 +1,30 @@
+close all;
+
+%% Load Data
+raw_filepath = '../LabviewFiles/Data/Sistania_Precision/Trial05_RawData.csv';
+raw_data = csvread(raw_filepath,1,0);
+
+%% Process Data
+
+%   CLEAN
+    raw_data(~any(raw_data,2), : ) = [];  %Delete Empty Rows
+    raw_data = raw_data(:,2); %Grab only relevant columns
+
+%   BANDPASS 20 - 500 hz
+    %F = designfilt('bandpassiir','FilterOrder',2,'HalfPowerFrequency1',59,'HalfPowerFrequency2',61, 'DesignMethod','butter','SampleRate',1000);
+    %filt_data = filter(F,raw_data);
+    filt_data = filter1('bp',raw_data,'fc'
+    F = filter1('bp',y,'fc',[20 500],'fs',1000);
+
+%   RECTIFY
+    rect_data = abs(filt_data);
+
+
+%   LOWPASS FOR SMOOTHING at 5th order 10 hz
+    [b,a]=butter(5,10/1000,'low'); %5th order butterworth lowpass filter
+    smooth_data = filtfilt(b,a,rect_data);
+
+
+
+%% Normalize Data
+
