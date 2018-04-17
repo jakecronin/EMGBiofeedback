@@ -13,8 +13,10 @@ raw_data = csvread(raw_filepath,1,0);
     raw_data = raw_data(:,2); %Grab only relevant columns
     if size(raw_data,1) >= 8000
         raw_data = raw_data(1000:8000,1);
+    elseif size(raw_data,1) > 7000
+        raw_data = raw_data(1:7001,1);
     end
-    
+    disp(size(raw_data,1))
 
 %   BANDPASS 20 - 500 hz 4th order
     %F = designfilt('bandpassiir','FilterOrder',2,'HalfPowerFrequency1',59,'HalfPowerFrequency2',61, 'DesignMethod','butter','SampleRate',1000);
