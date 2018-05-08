@@ -61,7 +61,17 @@ title('Activation Distribution for Activation Targets of 5%, 8%, 10%, 12%, 15%, 
 figure(2)
 hold on
 activations = ["5%", "8%", "10%", "12%", "15%", "20%"];
-boxplot([smooth{1,1} smooth{2,1} smooth{3,1} smooth{4,1} smooth{5,1} smooth{6,1}], activations);
+
+%Chop off excess data to normalize array sizes
+min = size(smooth{1,1},1);
+for i=2:size(smooth,1)
+    if size(smooth{i,1},1) < min
+        min = size(smooth{i,1},1);
+    end
+end
+
+
+boxplot([smooth{1,1}(1:min,1) smooth{2,1}(1:min,1) smooth{3,1}(1:min,1) smooth{4,1}(1:min,1) smooth{5,1}(1:min,1) smooth{6,1}(1:min,1)], activations);
 title('EMG Activation Distribution Across Targets 5%, 8%, 10%, 12%, 15%, and 20% Combining Like Trials, lowpass-smooth');
 ylabel('Percent of MVC')
 xlabel('Target Activation')

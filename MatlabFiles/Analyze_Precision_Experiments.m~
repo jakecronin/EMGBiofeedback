@@ -1,0 +1,27 @@
+%Analyze_Precision_Experiments looks at precision testing and bin testing
+%from trials with 6 subjects (Sistania, Brian, Phil, Ray, Daniel, and
+%Antonio
+
+%Purpose: 
+%   1) Show precision in distinguishing between activation
+%   percentages for subjects given an activation target
+%   
+%   2) Check how precision changes as biofeedback becomes more or less
+%   sensitive
+
+
+%% Pull data from each subjet's trials
+
+% Steps
+
+%Begin with Sistania
+
+% get mvc for scaling
+filepaths = [...
+    '../LabviewFiles/Data/Sistania_Precision_Sitting/MVC 2RawEMG.csv'...
+    
+    ];
+
+
+%Make figure with all people's boxplots and histograms
+%Make figure with combined boxplot and histogram
