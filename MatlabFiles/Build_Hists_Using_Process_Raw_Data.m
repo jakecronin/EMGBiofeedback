@@ -21,7 +21,7 @@ if combineTrials
                 raw_filepath = ['../LabviewFiles/Data/Sistania_Precision/Trial0' num2str(trialNum) '_RawData.csv'];
             end
             processRawData;
-            combined = [combined smooth_data];  %append smoothed data for given activation
+            combined = [combined; smooth_data];  %append smoothed data for given activation
         end
         smooth(i,1) = {smooth_data};
     end
@@ -34,6 +34,16 @@ else
     raw_filepath = '../LabviewFiles/Data/Sistania_Precision/Trial10_RawData.csv';
     processRawData;
     smooth(6,1) = {smooth_data};
+end
+
+min = size(smooth{1,1},1);
+for i = 1:size(smooth,1);
+    if size(smooth{i,1},1) < min
+        min = size(smooth{i,1},1);
+    end
+end
+for i = 1:size(smooth,1);
+    smooth{i,1} = smooth{i,1}(1:min,1);
 end
 
 

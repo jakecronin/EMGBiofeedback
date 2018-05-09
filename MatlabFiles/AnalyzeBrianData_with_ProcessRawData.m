@@ -3,7 +3,7 @@ mvc = 100;
 raw_filepath = '../LabviewFiles/Data/Default/MVC 5RawEMG.csv';
 processRawData;
 windowWidth = 500; %samples
-mvc = max(movmean(smooth_data,windowWidth));
+mvc = max(movmean(smooth_data,windowWidth))
 
 trialNumbers = [1 2 3; 4 5 6; 7 8 9; 10 11 12; 13 14 15; 16 17 18];%5, 8, 10, 12, 15, 20
 
@@ -21,7 +21,7 @@ if combineTrials
                 raw_filepath = ['../LabviewFiles/Data/Default/Trial0' num2str(trialNum) '_RawData.csv'];
             end
             processRawData;
-            combined = [combined smooth_data];  %append smoothed data for given activation
+            combined = [combined; smooth_data];  %append smoothed data for given activation
         end
         smooth(i,1) = {smooth_data};
     end
@@ -37,6 +37,19 @@ else
         smooth(i,1) = {smooth_data};
     end
 end
+
+%get min recording size
+min = size(smooth{1,1},1);
+for i = 1:size(smooth,1)
+   if size(smooth{i,1},1) < min
+       min = size(smooth{i,1},1)
+   end
+end
+for i = 1:size(smooth,1)
+    smooth{i,1} = smooth{i,1}(1:min,1);
+end
+
+
 
 
 close all;

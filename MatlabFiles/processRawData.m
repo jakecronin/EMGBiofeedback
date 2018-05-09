@@ -70,7 +70,7 @@ raw_data = csvread(raw_filepath,1,0);
 %% Plot Data
 
 if plot_data
-    r = 5
+    r = 5;
     figure(1); hold on;
     subplot(r,1,1); plot(raw_data); title('raw data');
     subplot(r,1,2); plot(filt_data); title('filt data');
