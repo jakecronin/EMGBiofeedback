@@ -272,3 +272,9 @@ if plot_combined
         text(i,m(i),num2str(m(i)),'HorizontalAlignment','left');
     end 
 end
+
+%% Get Precision and Accuracy
+
+
+accuracy = m - [5 8 10 12 15 20]
+precision = std(data_array)
