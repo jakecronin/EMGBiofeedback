@@ -221,6 +221,10 @@ for i = 1:size(all_subject_data,2)
     boxplot(all_subject_data{1,i},activations);
     axis([0 7 0 30]);
     title(names(1,i));
+    if i == 1
+        ylabel('Percent of MVC')
+        xlabel('Target Activation')
+    end
     m = mean(all_subject_data{1,i});
     for j = 1:size(activations,2)
         text(j,m(j),num2str(m(j)),'HorizontalAlignment','left');
@@ -232,6 +236,10 @@ for i = 1:size(all_subject_data,2)
         histfit(all_subject_data{1,i}(:,target), hist_precision);
         plot(m(target), 0, '*r');
         axis([0 30 0 10000])
+        if i == 1
+            ylabel('Volume of Occurances')
+            xlabel('Activation as % of MVC')
+        end
         text(m(target),-80,num2str(m(target)),'VerticalAlignment','top','Rotation', -45, 'Color', 'r');
     end
 end
@@ -275,6 +283,19 @@ end
 
 %% Get Precision and Accuracy
 
+targets = [5 8 10 12 15 20];
+accuracy = m - targets;
+precision = std(data_array);
+precision_regression = regress(precision',targets');
+predicted_vals = targets .* precision_regression;
 
-accuracy = m - [5 8 10 12 15 20]
-precision = std(data_array)
+figure
+plot(targets,precision);
+hold on;
+plot(targets,predicted_vals);
+title('Standard Deviation Across Activation Levels with Regression')
+xlabel('Target Activation')
+ylabel('Standard Deviation as % of MVC')
+text_label = strcat('Regression Coefficient:',num2str(precision_regression));
+text(7,3,text_label);
+
